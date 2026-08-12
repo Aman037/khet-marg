@@ -13,6 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChooseCropRouteImport } from './routes/choose-crop'
 import { Route as DescribeRouteImport } from './routes/describe'
 import { Route as HomeRouteImport } from './routes/home'
+import { Route as PhotoRouteImport } from './routes/photo'
+import { Route as ResultRouteImport } from './routes/result'
+import { Route as StepsRouteImport } from './routes/steps'
+import { Route as VoiceRouteImport } from './routes/voice'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +38,46 @@ const HomeRoute = HomeRouteImport.update({
   path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PhotoRoute = PhotoRouteImport.update({
+  id: '/photo',
+  path: '/photo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultRoute = ResultRouteImport.update({
+  id: '/result',
+  path: '/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StepsRoute = StepsRouteImport.update({
+  id: '/steps',
+  path: '/steps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceRoute = VoiceRouteImport.update({
+  id: '/voice',
+  path: '/voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/choose-crop': typeof ChooseCropRoute
   '/describe': typeof DescribeRoute
   '/home': typeof HomeRoute
+  '/photo': typeof PhotoRoute
+  '/result': typeof ResultRoute
+  '/steps': typeof StepsRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/choose-crop': typeof ChooseCropRoute
   '/describe': typeof DescribeRoute
   '/home': typeof HomeRoute
+  '/photo': typeof PhotoRoute
+  '/result': typeof ResultRoute
+  '/steps': typeof StepsRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +85,42 @@ export interface FileRoutesById {
   '/choose-crop': typeof ChooseCropRoute
   '/describe': typeof DescribeRoute
   '/home': typeof HomeRoute
+  '/photo': typeof PhotoRoute
+  '/result': typeof ResultRoute
+  '/steps': typeof StepsRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/choose-crop' | '/describe' | '/home'
+  fullPaths:
+    | '/'
+    | '/choose-crop'
+    | '/describe'
+    | '/home'
+    | '/photo'
+    | '/result'
+    | '/steps'
+    | '/voice'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/choose-crop' | '/describe' | '/home'
-  id: '__root__' | '/' | '/choose-crop' | '/describe' | '/home'
+  to:
+    | '/'
+    | '/choose-crop'
+    | '/describe'
+    | '/home'
+    | '/photo'
+    | '/result'
+    | '/steps'
+    | '/voice'
+  id:
+    | '__root__'
+    | '/'
+    | '/choose-crop'
+    | '/describe'
+    | '/home'
+    | '/photo'
+    | '/result'
+    | '/steps'
+    | '/voice'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +128,10 @@ export interface RootRouteChildren {
   ChooseCropRoute: typeof ChooseCropRoute
   DescribeRoute: typeof DescribeRoute
   HomeRoute: typeof HomeRoute
+  PhotoRoute: typeof PhotoRoute
+  ResultRoute: typeof ResultRoute
+  StepsRoute: typeof StepsRoute
+  VoiceRoute: typeof VoiceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +164,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/photo': {
+      id: '/photo'
+      path: '/photo'
+      fullPath: '/photo'
+      preLoaderRoute: typeof PhotoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/result': {
+      id: '/result'
+      path: '/result'
+      fullPath: '/result'
+      preLoaderRoute: typeof ResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/steps': {
+      id: '/steps'
+      path: '/steps'
+      fullPath: '/steps'
+      preLoaderRoute: typeof StepsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice': {
+      id: '/voice'
+      path: '/voice'
+      fullPath: '/voice'
+      preLoaderRoute: typeof VoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +200,10 @@ const rootRouteChildren: RootRouteChildren = {
   ChooseCropRoute: ChooseCropRoute,
   DescribeRoute: DescribeRoute,
   HomeRoute: HomeRoute,
+  PhotoRoute: PhotoRoute,
+  ResultRoute: ResultRoute,
+  StepsRoute: StepsRoute,
+  VoiceRoute: VoiceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
