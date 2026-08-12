@@ -12,9 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChooseCropRouteImport } from './routes/choose-crop'
 import { Route as DescribeRouteImport } from './routes/describe'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as HomeRouteImport } from './routes/home'
+import { Route as MyCropRouteImport } from './routes/my-crop'
 import { Route as PhotoRouteImport } from './routes/photo'
 import { Route as ResultRouteImport } from './routes/result'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as StepsRouteImport } from './routes/steps'
 import { Route as VoiceRouteImport } from './routes/voice'
 
@@ -33,9 +36,19 @@ const DescribeRoute = DescribeRouteImport.update({
   path: '/describe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeRoute = HomeRouteImport.update({
   id: '/home',
   path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyCropRoute = MyCropRouteImport.update({
+  id: '/my-crop',
+  path: '/my-crop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PhotoRoute = PhotoRouteImport.update({
@@ -46,6 +59,11 @@ const PhotoRoute = PhotoRouteImport.update({
 const ResultRoute = ResultRouteImport.update({
   id: '/result',
   path: '/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StepsRoute = StepsRouteImport.update({
@@ -63,9 +81,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/choose-crop': typeof ChooseCropRoute
   '/describe': typeof DescribeRoute
+  '/help': typeof HelpRoute
   '/home': typeof HomeRoute
+  '/my-crop': typeof MyCropRoute
   '/photo': typeof PhotoRoute
   '/result': typeof ResultRoute
+  '/settings': typeof SettingsRoute
   '/steps': typeof StepsRoute
   '/voice': typeof VoiceRoute
 }
@@ -73,9 +94,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/choose-crop': typeof ChooseCropRoute
   '/describe': typeof DescribeRoute
+  '/help': typeof HelpRoute
   '/home': typeof HomeRoute
+  '/my-crop': typeof MyCropRoute
   '/photo': typeof PhotoRoute
   '/result': typeof ResultRoute
+  '/settings': typeof SettingsRoute
   '/steps': typeof StepsRoute
   '/voice': typeof VoiceRoute
 }
@@ -84,9 +108,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/choose-crop': typeof ChooseCropRoute
   '/describe': typeof DescribeRoute
+  '/help': typeof HelpRoute
   '/home': typeof HomeRoute
+  '/my-crop': typeof MyCropRoute
   '/photo': typeof PhotoRoute
   '/result': typeof ResultRoute
+  '/settings': typeof SettingsRoute
   '/steps': typeof StepsRoute
   '/voice': typeof VoiceRoute
 }
@@ -96,9 +123,12 @@ export interface FileRouteTypes {
     | '/'
     | '/choose-crop'
     | '/describe'
+    | '/help'
     | '/home'
+    | '/my-crop'
     | '/photo'
     | '/result'
+    | '/settings'
     | '/steps'
     | '/voice'
   fileRoutesByTo: FileRoutesByTo
@@ -106,9 +136,12 @@ export interface FileRouteTypes {
     | '/'
     | '/choose-crop'
     | '/describe'
+    | '/help'
     | '/home'
+    | '/my-crop'
     | '/photo'
     | '/result'
+    | '/settings'
     | '/steps'
     | '/voice'
   id:
@@ -116,9 +149,12 @@ export interface FileRouteTypes {
     | '/'
     | '/choose-crop'
     | '/describe'
+    | '/help'
     | '/home'
+    | '/my-crop'
     | '/photo'
     | '/result'
+    | '/settings'
     | '/steps'
     | '/voice'
   fileRoutesById: FileRoutesById
@@ -127,9 +163,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChooseCropRoute: typeof ChooseCropRoute
   DescribeRoute: typeof DescribeRoute
+  HelpRoute: typeof HelpRoute
   HomeRoute: typeof HomeRoute
+  MyCropRoute: typeof MyCropRoute
   PhotoRoute: typeof PhotoRoute
   ResultRoute: typeof ResultRoute
+  SettingsRoute: typeof SettingsRoute
   StepsRoute: typeof StepsRoute
   VoiceRoute: typeof VoiceRoute
 }
@@ -157,11 +196,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DescribeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home': {
       id: '/home'
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-crop': {
+      id: '/my-crop'
+      path: '/my-crop'
+      fullPath: '/my-crop'
+      preLoaderRoute: typeof MyCropRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/photo': {
@@ -176,6 +229,13 @@ declare module '@tanstack/react-router' {
       path: '/result'
       fullPath: '/result'
       preLoaderRoute: typeof ResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/steps': {
@@ -199,9 +259,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChooseCropRoute: ChooseCropRoute,
   DescribeRoute: DescribeRoute,
+  HelpRoute: HelpRoute,
   HomeRoute: HomeRoute,
+  MyCropRoute: MyCropRoute,
   PhotoRoute: PhotoRoute,
   ResultRoute: ResultRoute,
+  SettingsRoute: SettingsRoute,
   StepsRoute: StepsRoute,
   VoiceRoute: VoiceRoute,
 }
