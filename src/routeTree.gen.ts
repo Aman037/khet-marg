@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChooseCropRouteImport } from './routes/choose-crop'
+import { Route as DescribeRouteImport } from './routes/describe'
+import { Route as HomeRouteImport } from './routes/home'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChooseCropRoute = ChooseCropRouteImport.update({
+  id: '/choose-crop',
+  path: '/choose-crop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DescribeRoute = DescribeRouteImport.update({
+  id: '/describe',
+  path: '/describe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/choose-crop': typeof ChooseCropRoute
+  '/describe': typeof DescribeRoute
+  '/home': typeof HomeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/choose-crop': typeof ChooseCropRoute
+  '/describe': typeof DescribeRoute
+  '/home': typeof HomeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/choose-crop': typeof ChooseCropRoute
+  '/describe': typeof DescribeRoute
+  '/home': typeof HomeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/choose-crop' | '/describe' | '/home'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/choose-crop' | '/describe' | '/home'
+  id: '__root__' | '/' | '/choose-crop' | '/describe' | '/home'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChooseCropRoute: typeof ChooseCropRoute
+  DescribeRoute: typeof DescribeRoute
+  HomeRoute: typeof HomeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/choose-crop': {
+      id: '/choose-crop'
+      path: '/choose-crop'
+      fullPath: '/choose-crop'
+      preLoaderRoute: typeof ChooseCropRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/describe': {
+      id: '/describe'
+      path: '/describe'
+      fullPath: '/describe'
+      preLoaderRoute: typeof DescribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChooseCropRoute: ChooseCropRoute,
+  DescribeRoute: DescribeRoute,
+  HomeRoute: HomeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
