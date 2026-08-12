@@ -3,7 +3,7 @@ import { AppShell } from "@/components/khet/AppShell";
 import { Badge, Button, Card, EmptyState, PageHeader, SectionHeading } from "@/components/khet/ui";
 import { cropName, problemName } from "@/lib/khet/i18n";
 import { useKhet } from "@/lib/khet/store";
-import { WifiOff } from "lucide-react";
+import { WifiOff, Wheat, Camera } from "lucide-react";
 
 export const Route = createFileRoute("/my-crop")({
   head: () => ({
@@ -59,9 +59,7 @@ function MyCrop() {
       <PageHeader title={t("myCropTitle")} eyebrow={t("thisWeek")} />
 
       <Card className="flex items-center gap-4">
-        <span className="text-4xl" aria-hidden="true">
-          🌾
-        </span>
+        <Wheat className="size-9 shrink-0 text-primary" aria-hidden="true" />
         <div>
           <p className="khet-heading">{cropName(myCrop, lang)}</p>
           <p className="mt-1 khet-secondary text-muted-foreground">{t("thisWeek")}</p>
@@ -99,8 +97,12 @@ function MyCrop() {
                 )}
                 <p className="mt-3 khet-secondary text-muted-foreground">
                   {cropName(o.crop, lang)} · {o.date}
-                  {o.photo ? " · 📷" : ""}
                 </p>
+                {o.photo && (
+                  <p className="mt-2 inline-flex items-center gap-2 khet-secondary text-muted-foreground">
+                    <Camera className="size-4" aria-hidden="true" /> 1
+                  </p>
+                )}
               </Card>
             ))}
           </ul>

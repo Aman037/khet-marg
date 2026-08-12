@@ -118,13 +118,13 @@ export function OptionCard({
 }
 
 export function CropCard({
-  emoji,
+  icon,
   name,
   secondary,
   selected,
   onClick,
 }: {
-  emoji: string;
+  icon: ReactNode;
   name: string;
   secondary: string;
   selected?: boolean;
@@ -142,8 +142,8 @@ export function CropCard({
           : "border-border hover:border-border-strong hover:bg-secondary",
       )}
     >
-      <span className="text-3xl" aria-hidden="true">
-        {emoji}
+      <span aria-hidden="true" className="flex size-11 items-center justify-center rounded-lg bg-secondary text-primary">
+        {icon}
       </span>
       <span>
         <span className="block text-[1.125rem] font-semibold">{name}</span>

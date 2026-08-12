@@ -4,7 +4,7 @@ import { Badge, Card, OptionCard, SectionHeading } from "@/components/khet/ui";
 import { useKhet } from "@/lib/khet/store";
 import { cropName } from "@/lib/khet/i18n";
 import { useState } from "react";
-import { WifiOff } from "lucide-react";
+import { WifiOff, Sprout, CloudSun, Droplets, CalendarCheck, Wheat } from "lucide-react";
 
 export const Route = createFileRoute("/home")({
   head: () => ({
@@ -40,7 +40,7 @@ function HomeScreen() {
 
       <div className="space-y-3">
         <OptionCard
-          icon="🌱"
+          icon={<Sprout className="size-6 text-primary" />}
           title={t("actProblem")}
           subtitle={t("actProblemSub")}
           onClick={() => {
@@ -49,19 +49,19 @@ function HomeScreen() {
           }}
         />
         <OptionCard
-          icon="🌦️"
+          icon={<CloudSun className="size-6 text-primary" />}
           title={t("actWeather")}
           subtitle={t("actWeatherSub")}
           onClick={() => (offline ? needsInternet() : navigate({ to: "/help" }))}
         />
         <OptionCard
-          icon="💧"
+          icon={<Droplets className="size-6 text-primary" />}
           title={t("actWater")}
           subtitle={t("actWaterSub")}
           onClick={() => (offline ? needsInternet() : navigate({ to: "/help" }))}
         />
         <OptionCard
-          icon="📅"
+          icon={<CalendarCheck className="size-6 text-primary" />}
           title={t("actTasks")}
           subtitle={t("actTasksSub")}
           onClick={() => navigate({ to: "/my-crop" })}
@@ -85,9 +85,7 @@ function HomeScreen() {
         <SectionHeading>{t("myCropShort")}</SectionHeading>
         <Card>
           <div className="flex items-center gap-4">
-            <span className="text-3xl" aria-hidden="true">
-              🌾
-            </span>
+            <Wheat className="size-8 shrink-0 text-primary" aria-hidden="true" />
             <div className="min-w-0 flex-1">
               <p className="khet-heading">{myCrop ? cropName(myCrop, lang) : t("emptyCrop")}</p>
               <p className="mt-1 khet-secondary text-muted-foreground">

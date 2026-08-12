@@ -4,6 +4,7 @@ import { Button, Card, OptionCard, PageHeader, SectionHeading } from "@/componen
 import { VoicePanel } from "@/components/khet/VoicePanel";
 import { useKhet } from "@/lib/khet/store";
 import { useState } from "react";
+import { Mic, Camera, BookOpen, UserRound } from "lucide-react";
 
 export const Route = createFileRoute("/help")({
   head: () => ({
@@ -64,25 +65,25 @@ function HelpScreen() {
 
       <div className="space-y-3">
         <OptionCard
-          icon="🎙️"
+          icon={<Mic className="size-6 text-primary" />}
           title={t("helpVoice")}
           subtitle={t("helpVoiceSub")}
           onClick={() => setMode("voice")}
         />
         <OptionCard
-          icon="📷"
+          icon={<Camera className="size-6 text-primary" />}
           title={t("helpPhoto")}
           subtitle={t("helpPhotoSub")}
           onClick={() => navigate({ to: "/photo" })}
         />
         <OptionCard
-          icon="📖"
+          icon={<BookOpen className="size-6 text-primary" />}
           title={t("helpHow")}
           subtitle={t("helpHowSub")}
           onClick={() => navigate({ to: "/steps" })}
         />
         <OptionCard
-          icon="👨‍🌾"
+          icon={<UserRound className="size-6 text-primary" />}
           title={t("helpExpert")}
           subtitle={t("helpExpertSub")}
           onClick={() => setMode("expert")}

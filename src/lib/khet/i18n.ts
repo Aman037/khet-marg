@@ -31,7 +31,7 @@ export const strings = {
   },
 
   // home
-  greeting: { hi: "नमस्ते 👋", en: "Namaste 👋" },
+  greeting: { hi: "नमस्ते", en: "Namaste" },
   homeQuestion: {
     hi: "आज खेत के लिए क्या जानना है?",
     en: "What do you want to know today?",

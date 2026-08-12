@@ -2,6 +2,17 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { AppShell } from "@/components/khet/AppShell";
 import { Button, CropCard, PageHeader, ProgressSteps } from "@/components/khet/ui";
 import { crops } from "@/lib/khet/i18n";
+import { Wheat, Sprout, Leaf, Carrot, Bean, Plus } from "lucide-react";
+import type { ReactNode } from "react";
+
+const cropIcons: Record<string, ReactNode> = {
+  wheat: <Wheat className="size-6" />,
+  rice: <Sprout className="size-6" />,
+  maize: <Leaf className="size-6" />,
+  potato: <Carrot className="size-6" />,
+  pulses: <Bean className="size-6" />,
+  other: <Plus className="size-6" />,
+};
 import { useKhet } from "@/lib/khet/store";
 
 export const Route = createFileRoute("/choose-crop")({
@@ -29,7 +40,7 @@ function ChooseCrop() {
         {crops.map((c) => (
           <CropCard
             key={c.id}
-            emoji={c.emoji}
+            icon={cropIcons[c.id]}
             name={c[lang]}
             secondary={lang === "hi" ? c.en : c.hi}
             selected={draft.crop === c.id}
