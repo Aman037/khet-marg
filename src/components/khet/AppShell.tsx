@@ -158,7 +158,7 @@ export function AppShell({
 }) {
   return (
     <div className="min-h-dvh bg-background pb-24 md:pb-12">
-      <TopBar back={back} />
+      <TopBar back={back ?? false} />
       <main className="mx-auto w-full max-w-[1100px] px-5 py-8">
         {aside ? (
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
