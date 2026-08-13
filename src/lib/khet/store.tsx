@@ -78,7 +78,7 @@ type Ctx = State & {
 };
 
 const KhetContext = createContext<Ctx | null>(null);
-const KEY = "khet-state-v1";
+const KEY = "khet-state-v2";
 
 const SIZE_PX: Record<TextSize, string> = {
   default: "16px",
