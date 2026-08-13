@@ -52,19 +52,20 @@ const DEFAULTS: State = {
       id: "seed-1",
       crop: "wheat",
       problem: "yellow",
-      note: "नीचे के कुछ पत्ते पीले दिखे",
+      note: "@seedNote1",
       photo: true,
-      date: "2 days ago",
+      date: "@days:2",
     },
     {
       id: "seed-2",
       crop: "wheat",
       problem: "growth",
-      note: "खेत के कोने में पौधे छोटे हैं",
+      note: "@seedNote2",
       photo: false,
-      date: "5 days ago",
+      date: "@days:5",
     },
   ],
+
   draft: { crop: null, problem: null, note: "", photo: false },
 };
 
