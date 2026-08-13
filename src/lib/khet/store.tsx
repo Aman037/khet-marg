@@ -133,7 +133,7 @@ export function KhetProvider({ children }: { children: ReactNode }) {
         problem: s.draft.problem,
         note: s.draft.note,
         photo: s.draft.photo,
-        date: "Today",
+        date: "@today",
       };
       return { ...s, myCrop: s.myCrop ?? s.draft.crop, observations: [obs, ...s.observations] };
     });
