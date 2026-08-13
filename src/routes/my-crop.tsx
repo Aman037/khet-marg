@@ -27,6 +27,12 @@ function MyCrop() {
   const { t, lang, myCrop, observations, offline, resetDraft, set } = useKhet();
   const navigate = useNavigate();
 
+  const resolve = (value: string) => {
+    if (!value.startsWith("@")) return value;
+    if (value.startsWith("@days:")) return t("daysAgo", { n: value.slice(6) });
+    return t(value.slice(1) as Parameters<typeof t>[0]);
+  };
+
   const startFlow = () => {
     resetDraft();
     navigate({ to: "/choose-crop" });
@@ -93,10 +99,10 @@ function MyCrop() {
               <Card as="li" key={o.id}>
                 <p className="khet-body font-semibold">{problemName(o.problem, lang)}</p>
                 {o.note && (
-                  <p className="mt-1 khet-secondary text-muted-foreground">{o.note}</p>
+                  <p className="mt-1 khet-secondary text-muted-foreground">{resolve(o.note)}</p>
                 )}
                 <p className="mt-3 khet-secondary text-muted-foreground">
-                  {cropName(o.crop, lang)} · {o.date}
+                  {cropName(o.crop, lang)} · {resolve(o.date)}
                 </p>
                 {o.photo && (
                   <p className="mt-2 inline-flex items-center gap-2 khet-secondary text-muted-foreground">

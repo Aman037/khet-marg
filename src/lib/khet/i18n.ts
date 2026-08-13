@@ -288,6 +288,15 @@ export const strings = {
     hi: "यह जानकारी ऑफलाइन भी उपलब्ध है",
     en: "Available offline",
   },
+  seedNote1: {
+    hi: "नीचे के कुछ पत्ते पीले दिखे",
+    en: "Some of the lower leaves looked yellow",
+  },
+  seedNote2: {
+    hi: "खेत के कोने में पौधे छोटे हैं",
+    en: "Plants in the corner of the field are small",
+  },
+  daysAgo: { hi: "{n} दिन पहले", en: "{n} days ago" },
 } satisfies Record<string, Entry>;
 
 export type StringKey = keyof typeof strings;
@@ -298,6 +307,7 @@ export function translate(key: StringKey, lang: Lang, vars?: Record<string, stri
     for (const [k, v] of Object.entries(vars)) out = out.replace(`{${k}}`, String(v));
   }
   return out;
+
 }
 
 export const crops = [

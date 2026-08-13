@@ -52,19 +52,20 @@ const DEFAULTS: State = {
       id: "seed-1",
       crop: "wheat",
       problem: "yellow",
-      note: "नीचे के कुछ पत्ते पीले दिखे",
+      note: "@seedNote1",
       photo: true,
-      date: "2 days ago",
+      date: "@days:2",
     },
     {
       id: "seed-2",
       crop: "wheat",
       problem: "growth",
-      note: "खेत के कोने में पौधे छोटे हैं",
+      note: "@seedNote2",
       photo: false,
-      date: "5 days ago",
+      date: "@days:5",
     },
   ],
+
   draft: { crop: null, problem: null, note: "", photo: false },
 };
 
@@ -77,7 +78,7 @@ type Ctx = State & {
 };
 
 const KhetContext = createContext<Ctx | null>(null);
-const KEY = "khet-state-v1";
+const KEY = "khet-state-v2";
 
 const SIZE_PX: Record<TextSize, string> = {
   default: "16px",
@@ -132,7 +133,7 @@ export function KhetProvider({ children }: { children: ReactNode }) {
         problem: s.draft.problem,
         note: s.draft.note,
         photo: s.draft.photo,
-        date: "Today",
+        date: "@today",
       };
       return { ...s, myCrop: s.myCrop ?? s.draft.crop, observations: [obs, ...s.observations] };
     });
